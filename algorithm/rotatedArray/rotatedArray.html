@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>旋转数组最小数</title>
+</head>
+<body>
+
+<script>
+   function rotatedArry(){
+       let ratate,rand
+       var myVal= document.getElementById("preArr").value+'';
+       if(myVal.length>0){
+         rand =  Math.floor(Math.random()*myVal.length);
+         ratate = myVal.slice(rand-1,myVal.length) + myVal.slice(0,rand-1)
+       }
+       document.getElementById("num").value = rand-1;
+       document.getElementById("showArr").value = ratate;
+   }
+   function minNum(){
+       debugger;
+       var reversNum= Array.from(document.getElementById("showArr").value+'');
+       let fPoint = 0;
+       let ePoint = reversNum.length;
+       //第一个指针是否比最后一个指针小
+       while(fPoint < ePoint){
+           var mid = fPoint + Math.floor((ePoint-fPoint)/2);
+           //2 比较中间数字和最后数字的大小
+           if(reversNum[mid]>reversNum[ePoint]){
+               fPoint = mid +1;
+           }else if(reversNum[mid] == reversNum[ePoint]){
+               ePoint = mid -1;
+           }else{
+               ePoint = mid;
+           }
+       }
+       document.getElementById("resNum").value = reversNum[fPoint];
+   }
+
+</script>
+<input type="text" id="preArr" style="width:300px; margin-left: 500px; height:50px; margin-top: 50px;" PlaceHolder = "输入数组" >
+<button onclick="rotatedArry()" >旋转数组</button>
+<div style="width:300px; margin-left: 500px; height:50px; margin-top: 30px;"> 翻转长度：<input  type="text" id="num"></div>
+<input type="text" id="showArr" style="width:300px; margin-left: 500px; height:50px; margin-top: 20px;" PlaceHolder = "翻转后的数组" >
+<button onclick="minNum()"> 旋转数组的最小数字</button>
+<input type="text" id="resNum" style="width:300px; margin-left: 500px; height:50px; margin-top: 50px;" PlaceHolder = "旋转后最小数字">
+</body>
+
+</html>
