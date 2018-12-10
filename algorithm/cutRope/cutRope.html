@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>剪绳子</title>
+</head>
+<style>
+    .inputCss{
+        width:300px;
+        margin-left: 500px;
+        height:50px;
+        margin-top: 50px;
+    }
+</style>
+<body>
+    <script>
+      function maxProduct(){
+          var rope = document.getElementById("ropeLength").value;
+          var num,maxSize,yu;
+          if(rope == 0){
+              maxSize = 0;
+          }else if(rope == 1){
+              maxSize = 1;
+          }else if(rope == 2){
+              maxSize =2;
+          }else if( rope ==3){
+              maxSize=3
+          }else if(rope ==4){
+              maxSize=4
+          }else{
+              num = parseInt(rope/3);
+              yu = parseInt(rope%3);
+              total = num + yu
+              //alert(total+"%%%%%%%%%%"+yu+"$$$$$$$$$$"+num);
+              if(total)
+                  maxSize =total > num ? Math.pow(num,3)*yu : Math.pow(num,3);
+          }
+          document.getElementById("maxPrdShow").value = maxSize;
+      }
+    </script>
+    <input type="text" placeholder="绳子长度" class="inputCss" id="ropeLength">
+    <button onclick="maxProduct()" >最大乘积</button>
+    <input type="text" placeholder="最大面积" class="inputCss" id="maxPrdShow">
+
+</body>
+</html>
