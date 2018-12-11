@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>最后一个单词长度</title>
+</head>
+<style>
+    .inputCss{
+        width:300px;
+        margin-left: 500px;
+        height:50px;
+        margin-top: 50px;
+    }
+</style>
+<body>
+    <script>
+        function interStr(){
+            var inputStr = document.getElementById("wordArr").value;
+           // var inputStr = "my name is Kristin";
+            var show =[];
+            var count =0
+            inputStr = inputStr.trim()
+           // var checkStr = inputStr.replace(/\s/g,'');
+            for(let i=inputStr.length;i--;){
+                count++;
+                show.unshift(inputStr[i])
+                if(inputStr[i] ==' '){
+                    document.getElementById("wordSize").value=count-1
+                    document.getElementById("wordShow").value=show.join("")
+                    break;
+                }
+            }
+        }
+    </script>
+    <input type="text" id="wordArr" class="inputCss" PlaceHolder = "输入字符" >
+    <button onclick="interStr()" >截取</button>
+    <input type="text" id="wordSize" class="inputCss" PlaceHolder = "最后一个单词长度" >
+    <input type="text" id="wordShow" class="inputCss" PlaceHolder = "最后一个单词长度" >
+
+</body>
+</html>
