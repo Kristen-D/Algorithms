@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>二进制中1的个数</title>
+</head>
+<style>
+    .inputCss{
+        width:300px;
+        margin-left: 500px;
+        height:50px;
+        margin-top: 50px;
+    }
+</style>
+<body>
+    <script>
+        function calNum(){
+            var calStr = parseInt(document.getElementById("preArr").value);
+            var calStrs = parseInt(document.getElementById("preArr").value).toString(2);//二进制展示内容
+            var count = 0;
+            while (calStr != 0) {
+                if ((calStr & 1) == 1) {
+                    count++;
+                }
+                calStr = calStr >>> 1;//每次除二，整除为0 ，就不计算在内
+            }
+            return count;
+        }
+    </script>
+    <input type="text" id="preArr" class="inputCss" PlaceHolder = "输入求值数字" >
+    <button onclick="calNum()" >开始计算</button>
+    <input type="text" id="showArr" style="width:300px; margin-left: 500px; height:50px; margin-top: 20px;" PlaceHolder = "含有1的个数" >
+</body>
+</html>
