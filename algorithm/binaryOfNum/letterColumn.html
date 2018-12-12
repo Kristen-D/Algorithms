@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>输入字母表示第几列</title>
+</head>
+<style>
+    .inputCss{
+        width:300px;
+        margin-left: 500px;
+        height:50px;
+        margin-top: 50px;
+    }
+</style>
+<body>
+    <script>
+        function calColumn(){
+            var calStr = document.getElementById("preArr").value.toUpperCase();
+            var result = 0;
+            for(var i = calStr.length; i > 0; i--) {
+                var ch = calStr.charCodeAt(i-1)-64;
+                if( i == calStr.length ){
+                    result += ch
+                }else{
+                    result += Math.pow(26, calStr.length-i) ;
+                }
+            }
+            document.getElementById("showArr").value=result
+        }
+    </script>
+
+    <input type="text" id="preArr" class="inputCss" PlaceHolder = "字母" >
+    <button onclick="calColumn()" >开始计算</button>
+    <input type="text" id="showArr" style="width:300px; margin-left: 500px; height:50px; margin-top: 20px;" PlaceHolder = "它是第几列" >
+
+</body>
+</html>

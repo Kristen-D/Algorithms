@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>二叉树的最大深度</title>
+</head>
+<body>
+    <script>
+        var root =[3,9,20,null,null,15,7]
+        function maxDepth(root) {
+            if (root === null) return 0;
+            var nodes = [];
+            nodes.push(root);
+            var i = 0;
+            while (nodes.length > 0) {
+                var nextNodes = [];
+                for (var j = 0; j < nodes.length; j++) {
+                    var node = nodes[j];
+                    if (node.left !== null) nextNodes.push(node.left);
+                    if (node.right !== null) nextNodes.push(node.right);
+                }
+                nodes = nextNodes;
+                i++;
+            }
+            return i;
+        };
+    </script>
+    <button onclick="maxDepth()" >截取</button>
+</body>
+</html>
