@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>有序数组转换为平衡二叉树</title>
+</head>
+<body>
+    <style>
+        .inputCss{
+            width:300px;
+            margin-left: 500px;
+            height:50px;
+            margin-top: 50px;
+        }
+    </style>
+    <script>
+        var Array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        var Tree = createTree(Array);
+        console.log(Tree);
+        // 构造一个节点
+        function Node(nodeData, leftData, rightData) {
+            this.nodeData = nodeData;
+            this.leftData = leftData;
+            this.rightData = rightData;
+        }
+        // 每次取中点作为根节点,向左和向右递归
+        function createTree(array) {
+            debugger;
+            if (array.length <= 0) {
+                return null;
+            } else {
+                var mid = parseInt(array.length / 2);
+                var node = new Node(array[mid], null, null);
+                var leftArray = array.slice(0 , mid);
+                var rightArray = array.slice(mid + 1 , array.length );
+                node.leftData = createTree(leftArray);
+                node.rightData = createTree(rightArray);
+                return node;
+            }
+        }
+
+        function sortTreeBST(){
+            var inputArr = document.getElementById("wordArr").value;
+        }
+
+    </script>
+    <!--//以后校验输入后面的那个数组是否比前一个大，不然就报错-->
+    <input type="text" id="wordArr" class="inputCss" PlaceHolder = "输入有序数组" >
+    <button onclick="sortTreeBST()" >转换平衡二叉树</button>
+    <input type="text" id="wordSize" class="inputCss" PlaceHolder = "结果" >
+</body>
+</html>
