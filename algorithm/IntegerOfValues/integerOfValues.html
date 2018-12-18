@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数值的整数次方</title>
+</head>
+<style>
+    .inputCss{
+        width:300px;
+        margin-left: 500px;
+        height:50px;
+        margin-top: 50px;
+    }
+</style>
+<body>
+    <script>
+        var base ;
+        var exponent ;
+        function Power(){
+            base = parseInt(document.getElementById("numVal").value);
+            exponent = parseInt(document.getElementById("exponent").value);
+
+            var res = 1,
+                curr = base,
+                n;
+            if (exponent > 0) {
+                n = exponent;
+            } else if (exponent < 0) {
+                if (base === 0)
+                    throw new Error("分母不能为0");
+                n = -exponent;
+            } else {
+                return 1;
+            }
+            while (n !== 0) {
+                if ((n & 1) == 1) {
+                    res *= curr;
+                }
+                curr *= curr; // 翻倍
+                n >>= 1; // 右移一位
+            }
+            exponent >= 0 ? res : (1 / res);
+            console.log(exponent)
+            document.getElementById("maxPrdShow").value = res;
+        }
+
+        function integerVal(){
+            var getVal = document.getElementById("numVal").value;
+
+        }
+    </script>
+
+    <input type="text" placeholder="数值" class="inputCss" id="numVal">
+    <input type="text" placeholder="次方" class="inputCss" id="exponent">
+    <button onclick="Power()" >求整数次方</button>
+    <input type="text" placeholder="结果" class="inputCss" id="maxPrdShow">
+</body>
+</html>
