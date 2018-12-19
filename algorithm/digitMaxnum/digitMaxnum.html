@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1到最大的n位数</title>
+</head>
+<style>
+    .inputCss{
+        width:300px;
+        margin-left: 500px;
+        height:50px;
+        margin-top: 50px;
+    }
+</style>
+<body>
+    <script>
+
+        function printOrder(number, n, loc){
+            if(loc == n) return;
+            for(var i = 0; i <= 9; i++){
+                number[loc] = ('' + i);
+                if(loc == n - 1){
+                    printNumber(number);
+                }
+                printOrder(number,n,loc + 1);
+            }
+        }
+        function  printNumber(num){
+            var arr = Object.values(num);
+            var size = arr.length;
+            var i = 0;
+            while(i < size && num[i] == '0') //i < size在前，否则越界
+                i++;
+            if(i == size)//
+                return;
+           console.log(parseInt(arr.join("")))//打印的地方，即为全部的数字
+        }
+
+        function showNum(){
+            var num = parseInt(document.getElementById("nLength").value);
+            if (num <=0) return ;
+            number ={};
+            printOrder(number,num,0)
+        }
+    </script>
+    <input type="text" placeholder="n的位数" class="inputCss" id="nLength">
+    <button onclick="showNum()" >展示</button>
+    <input type="text" placeholder="全部数字" class="inputCss" id="maxPrdShow">
+
+</body>
+</html>
