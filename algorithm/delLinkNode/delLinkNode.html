@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>删除链表节点</title>
+</head>
+<body>
+<script>
+
+    function ListNode(val) {
+        this.val = val;
+        this.next = null;
+    }
+    var head = new ListNode(10);
+    head.next = new ListNode(22);
+    console.log(head);
+    deleteDuplicates(head);
+    function  deleteDuplicates (head) {
+        debugger;
+        var dummy = new ListNode(-1);   // 创建一个虚拟节点
+
+        dummy.next = head;                     //让虚拟节点位于头节点之前
+        var pre = head = dummy;
+
+        while(pre){                          // pre !== null
+            var cur = pre.next;
+            var isDup = false;
+
+            while(cur && cur.next && cur.val === cur.next.val){
+                isDup = true;
+                var next = cur.next;              // 这时，准备删除 cur.next 节点
+                cur.next = next.next;           // 让 cur.next 指向 cur.next.next
+                next.next = null;                  // cur.next 这个节点的指向为 null
+            }
+
+            if(isDup){                // 这里，准备删除 cur 节点，因为重复的全部要删除
+                pre.next = cur.next;     // pre.next 指向 cur.next;
+                cur.next = null;           // cur.next 这个节点的值设为 null，cur 前面没人指着，后面指向 null，即被删除了
+                continue;
+            }
+
+            pre = cur;
+        }
+        return dummy.next;
+    };
+
+
+</script>
+</body>
+</html>

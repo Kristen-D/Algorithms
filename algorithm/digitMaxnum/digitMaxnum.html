@@ -14,7 +14,12 @@
 </style>
 <body>
     <script>
-
+        function showNum(){
+            var num = parseInt(document.getElementById("nLength").value);
+            if (num <=0) return ;
+            number ={};
+            printOrder(number,num,0)
+        }
         function printOrder(number, n, loc){
             if(loc == n) return;
             for(var i = 0; i <= 9; i++){
@@ -34,13 +39,6 @@
             if(i == size)//
                 return;
            console.log(parseInt(arr.join("")))//打印的地方，即为全部的数字
-        }
-
-        function showNum(){
-            var num = parseInt(document.getElementById("nLength").value);
-            if (num <=0) return ;
-            number ={};
-            printOrder(number,num,0)
         }
     </script>
     <input type="text" placeholder="n的位数" class="inputCss" id="nLength">
